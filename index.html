@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modern Schools - school management software</title>
+<meta name="description" content="Try the school software before you ask for it: a live fee voucher, a tour of every tab, who sees what, and a setup planner for your school.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Fredoka:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FBFBFF;--card:#fff;--ink:#1E2150;--mut:#5B607F;--rule:#E3E5F2;--acc:#3B3FA8;--on:#fff;--teal:#0B7F6C;--coral:#D6402C;--sun:#F6B93B;--sky:#1A74BF;--vio:#7646C8;--stamp:#D6402C;--wash:#EEF0FF;--b1:#E8EBFF;--b2:#DDF5EC;--b3:#FFE8E1;--b4:#E0F1FD;--b5:#F0E7FF;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#0F1130;--card:#191C45;--ink:#EEF0FF;--mut:#A9AEDB;--rule:#2B2F66;--acc:#8C92FF;--on:#10123A;--teal:#47D1B4;--coral:#FF8A76;--sun:#FFD166;--sky:#6CC3FF;--vio:#B890FF;--stamp:#FF7A70;--wash:#232760;--b1:#171A4D;--b2:#10332F;--b3:#3A1D22;--b4:#12304A;--b5:#2A1D4D}}
+:root[data-theme=dark]{--paper:#0F1130;--card:#191C45;--ink:#EEF0FF;--mut:#A9AEDB;--rule:#2B2F66;--acc:#8C92FF;--on:#10123A;--teal:#47D1B4;--coral:#FF8A76;--sun:#FFD166;--sky:#6CC3FF;--vio:#B890FF;--stamp:#FF7A70;--wash:#232760;--b1:#171A4D;--b2:#10332F;--b3:#3A1D22;--b4:#12304A;--b5:#2A1D4D}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;margin:0;line-height:1.08;letter-spacing:-.02em}
+a{color:var(--acc)}:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.w{max-width:1100px;margin:0 auto;padding:0 22px}
+header .w{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:16px;padding-bottom:16px}
+.logo{font:800 24px "Bricolage Grotesque",sans-serif;color:var(--acc);text-decoration:none}
+nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}nav a{color:var(--mut);text-decoration:none;font-size:15px}
+.btn{display:inline-block;background:var(--acc);color:var(--on);border:0;border-radius:99px;padding:12px 24px;font:600 16px "IBM Plex Sans",sans-serif;text-decoration:none;cursor:pointer}.btn.o{background:var(--sun);color:#1E2150}
+.hero{padding:54px 0 84px;background:var(--b1);position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%}.hero:before{width:340px;height:340px;background:var(--sun);right:-90px;top:-110px;opacity:.6}.hero:after{width:220px;height:220px;background:var(--coral);left:-70px;bottom:-80px;opacity:.35}
+.hero .w{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;position:relative;z-index:1}
+.hero h1{font:700 clamp(42px,6.2vw,72px)/1.04 "Fredoka","Trebuchet MS",sans-serif;letter-spacing:-.01em;color:var(--ink);text-shadow:3px 3px 0 var(--sun)}
+.lead{font-size:19px;color:var(--mut);max-width:30em;margin:20px 0 8px}.try{font-weight:600;margin:0 0 22px}
+.vch{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:20px 22px;position:relative;box-shadow:9px 9px 0 var(--vio)}
+.vch h3{font-size:21px;color:var(--acc)}.vch .sm{color:var(--mut);font-size:14px;margin:2px 0 12px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule)}
+.row label{font-size:15px}.row input{width:120px;text-align:right;font:500 16px "IBM Plex Mono",monospace;color:var(--ink);background:var(--wash);border:1.5px solid var(--rule);border-radius:8px;padding:6px 8px}
+.row output{font:500 16px "IBM Plex Mono",monospace}.tot{background:var(--wash);border-radius:6px;padding:8px;font-weight:600;border-bottom:0}
+.ur{font-family:"Noto Nastaliq Urdu",serif;line-height:2}
+.stamp{position:absolute;right:18px;top:64px;border:4px solid var(--stamp);color:var(--stamp);border-radius:50%;width:110px;height:110px;display:grid;place-items:center;font:800 26px "Bricolage Grotesque",sans-serif;transform:rotate(-14deg) scale(1.7);opacity:0;pointer-events:none}
+.paid .stamp{opacity:.92;transform:rotate(-14deg) scale(1);transition:transform .28s cubic-bezier(.2,1.4,.4,1),opacity .15s}
+.vch .btn{margin-top:14px;width:100%}
+section{padding:72px 0}section h2{font-size:clamp(28px,3.6vw,42px);margin-bottom:12px}section h2:after{content:"";display:block;width:64px;height:7px;border-radius:4px;background:var(--c,var(--coral));margin-top:12px}
+.sub{color:var(--mut);max-width:38em;margin:0 0 30px}
+#tour{background:var(--b2);--c:var(--teal)}#roles{background:var(--b3);--c:var(--coral)}#plan{background:var(--b4);--c:var(--sky)}#faq{background:var(--b5);--c:var(--vio)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tabs button,.roles button{font:600 15px "IBM Plex Sans",sans-serif;padding:10px 18px;border-radius:99px;border:2px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer}
+.tabs button[aria-selected=true],.roles button[aria-pressed=true]{color:var(--on);border-color:transparent}
+.tabs button:nth-child(1)[aria-selected=true],.roles button:nth-child(1)[aria-pressed=true]{background:var(--acc)}.tabs button:nth-child(2)[aria-selected=true],.roles button:nth-child(2)[aria-pressed=true]{background:var(--teal)}.tabs button:nth-child(3)[aria-selected=true],.roles button:nth-child(3)[aria-pressed=true]{background:var(--coral)}.tabs button:nth-child(4)[aria-selected=true],.roles button:nth-child(4)[aria-pressed=true]{background:var(--sky)}.tabs button:nth-child(5)[aria-selected=true]{background:var(--vio)}
+.tour{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start}
+.scr{background:var(--card);border:2px solid var(--teal);border-radius:14px;overflow:auto}.scr table{border-collapse:collapse;width:100%;font-size:14px;min-width:420px}.scr th,.scr td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule)}.scr th{background:var(--teal);color:var(--on);font-weight:600}.scr td.n,.scr th.n{text-align:right;font-family:"IBM Plex Mono",monospace}
+.tg{display:inline-block;padding:1px 10px;border-radius:99px;background:var(--teal);color:var(--on);font-size:12.5px}.tg.r{background:var(--coral)}
+.tour ul{margin:0;padding-left:22px}.tour li{margin:0 0 12px}.tour li::marker{color:var(--teal)}
+.rl{display:grid;grid-template-columns:260px 1fr;gap:30px;align-items:start}.roles{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;grid-column:1/-1}
+.menu{background:var(--card);border:2px solid var(--coral);border-radius:14px;padding:10px;display:grid;gap:3px}.menu span{padding:7px 11px;border-radius:8px;font-size:15px}.menu .on{background:var(--teal);color:var(--on);font-weight:600}.menu .off{color:var(--mut);text-decoration:line-through;opacity:.55}
+#rt{font-size:18px;max-width:30em}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}form label,form fieldset{display:grid;gap:5px;font-size:15px;font-weight:500;margin:0}form .f{grid-column:1/-1}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--sky);border-radius:10px;padding:11px 12px;width:100%}
+fieldset{border:2px solid var(--sky);border-radius:12px;padding:12px 14px;background:var(--card)}legend{font-weight:600;padding:0 6px;color:var(--sky)}.cb{display:flex;flex-wrap:wrap;gap:8px 18px}.cb label{display:flex;gap:7px;align-items:center;font-weight:400}.cb input{width:auto;accent-color:var(--sky)}
+.us{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.plan{grid-column:1/-1;background:var(--acc);color:var(--on);border-radius:14px;padding:16px 20px;font-size:17px}.plan b{font:600 20px "IBM Plex Mono",monospace;color:var(--sun)}
+.acts{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
+details{border-bottom:2px solid var(--vio);padding:14px 0}summary{cursor:pointer;font:700 19px "Bricolage Grotesque",sans-serif}summary::marker{color:var(--vio)}details p{color:var(--mut);margin:8px 0 0;max-width:44em}
+footer{padding:28px 0 36px;background:var(--ink);color:var(--paper);font-size:15px}footer a{color:var(--sun)}
+@media(max-width:860px){.hero .w,.tour,.rl{grid-template-columns:1fr}form{grid-template-columns:1fr}.us{grid-template-columns:1fr 1fr}nav a.h{display:none}.stamp{top:70px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.paid .stamp{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="w"><a class="logo" href="#top">Modern Schools</a><nav><a class="h" href="#tour">Tour</a><a class="h" href="#roles">Who sees what</a><a class="h" href="#plan">Plan your setup</a><a class="btn" href="#plan">Get started</a></nav></div></header>
+<main id="top">
+<div class="hero"><div class="w">
+ <div><h1>Try the fee desk before you buy the software</h1><p class="lead">Modern Schools runs admissions, fees, exams, payroll and accounts for Pakistani schools. Change the numbers on the voucher and mark it paid.</p><p class="try">Edit any amount in the voucher, then press Mark as paid.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#tour">Take the tour</a><a class="btn o" href="#plan">Plan your setup</a></div></div>
+ <div class="vch" id="vch" role="group" aria-label="Interactive fee voucher">
+  <h3>Modern Schools</h3><p class="sm">Fee voucher, October 2026. Ayesha Khan <span class="ur" lang="ur" dir="rtl">عائشہ خان</span>, Class 6-A</p>
+  <div class="row"><label for="vt">Tuition fee (PKR)</label><input id="vt" type="number" min="0" value="4500"></div>
+  <div class="row"><label for="va">Arrears carried forward</label><input id="va" type="number" min="0" value="1500"></div>
+  <div class="row"><label for="vc">Concession</label><input id="vc" type="number" min="0" value="0"></div>
+  <div class="row tot"><span>Total payable</span><output id="vtot">PKR 6,000</output></div>
+  <div class="row"><span>Balance due</span><output id="vbal">PKR 6,000</output></div>
+  <div class="stamp" aria-hidden="true">PAID</div>
+  <button class="btn" id="pay" type="button" aria-pressed="false">Mark as paid</button>
+ </div>
+</div></div>
+
+<section id="tour"><div class="w">
+ <h2>Take the tour, tab by tab</h2><p class="sub">Pick a tab to see the kind of screen your staff will use. The names are made up.</p>
+ <div class="tabs" role="tablist" id="tabs"></div>
+ <div class="tour"><div class="scr" id="scr" role="tabpanel" aria-live="polite"></div><ul id="tp"></ul></div>
+</div></section>
+
+<section id="roles"><div class="w">
+ <h2>Everyone sees only their part</h2><p class="sub">Choose a person to see which tabs they get. The school database enforces it, not only the screen.</p>
+ <div class="rl"><div class="roles" id="rb"></div><div class="menu" id="mn"></div><p id="rt"></p></div>
+</div></section>
+
+<section id="plan"><div class="w">
+ <h2>Plan your setup</h2><p class="sub">Tell us how big your school is and how many people will use it. The plan updates as you type, and sending it opens your email with everything filled in.</p>
+ <form id="pf">
+  <label>Your name<input name="n" required autocomplete="name"></label>
+  <label>School name<input name="s" required></label>
+  <label>Phone or WhatsApp<input name="p" required autocomplete="tel"></label>
+  <label>City<input name="c" autocomplete="address-level2"></label>
+  <label>Number of schools<input name="k" type="number" min="1" value="1"></label>
+  <label>Students in total<input name="m" type="number" min="1" value="300"></label>
+  <fieldset class="f"><legend>How many people will have a login?</legend><div class="us"><label>Administrators<input name="a" type="number" min="0" value="1"></label><label>Teachers<input name="t" type="number" min="0" value="10"></label><label>Accounts and office<input name="o" type="number" min="0" value="2"></label></div></fieldset>
+  <fieldset class="f"><legend>What do you need?</legend><div class="cb"><label><input type="checkbox" name="g" value="Admissions and ID cards" checked>Admissions and ID cards</label><label><input type="checkbox" name="g" value="Fee vouchers" checked>Fee vouchers</label><label><input type="checkbox" name="g" value="Exams and result cards" checked>Exams and result cards</label><label><input type="checkbox" name="g" value="Attendance" checked>Attendance</label><label><input type="checkbox" name="g" value="Staff and payroll">Staff and payroll</label><label><input type="checkbox" name="g" value="Accounts">Accounts</label></div></fieldset>
+  <label class="f">Anything else<textarea name="x" rows="3"></textarea></label>
+  <div class="plan f" id="pl" aria-live="polite"></div>
+  <div class="acts"><button class="btn" type="submit">Send my plan by email</button><button class="btn o" type="button" id="cp">Copy my plan</button></div>
+ </form>
+</div></section>
+
+<section id="faq"><div class="w"><h2>Questions</h2>
+ <details><summary>Can we use Urdu names?</summary><p>Yes. Each student has an English and an Urdu name, and both print on forms, vouchers, ID cards and result cards.</p></details>
+ <details><summary>Does each school keep separate data?</summary><p>Yes. Every school has its own database. Staff at one school never see another school.</p></details>
+ <details><summary>Can we bring our existing records?</summary><p>Yes. Students, staff, expenses and opening balances import from Excel, and everything exports back to Excel.</p></details>
+ <details><summary>What do we need to use it?</summary><p>A computer or phone with a web browser and an internet connection.</p></details>
+ <details><summary>What does it cost?</summary><p>It depends on the number of schools and students. Send your plan above and we will reply with a quote.</p></details>
+</div></section>
+</main>
+<footer><div class="w">Modern Schools, school management software. <a id="ml" href="#">Email us</a></div></footer>
+
+<script>
+const CONTACT_EMAIL="rauf.iqbal.ca@gmail.com";
+const $=s=>document.querySelector(s),nf=n=>'PKR '+Math.round(n).toLocaleString('en-PK');
+$('#ml').href='mailto:'+CONTACT_EMAIL;
+/* voucher */
+function vc(){const t=+$('#vt').value||0,a=+$('#va').value||0,c=+$('#vc').value||0,tot=Math.max(0,t-c+a),p=$('#vch').classList.contains('paid');$('#vtot').textContent=nf(tot);$('#vbal').textContent=nf(p?0:tot)}
+['#vt','#va','#vc'].forEach(s=>$(s).addEventListener('input',vc));
+$('#pay').addEventListener('click',()=>{const v=$('#vch'),p=v.classList.toggle('paid');$('#pay').textContent=p?'Undo payment':'Mark as paid';$('#pay').setAttribute('aria-pressed',p);vc()});
+/* tour */
+const T={Admissions:{h:['Student','Class','B-Form','Admission fee'],r:[['Ayesha Khan','6-A','42101-1234567-1','<span class=tg>Received</span>'],['Hamza Ali','6-A','42101-7654321-9','<span class=tg>Received</span>'],['Zainab Shah','7-A','42101-3344556-2','<span class="tg r">Pending</span>']],p:['English and Urdu names, B-Form, address and photo','Admission fee collected at the desk, with a receipt','Admission form, ID cards and leaving certificate on demand']},
+Fees:{h:['Invoice','Student','Due','Balance'],r:[['INV-1001','Ayesha Khan','10 Oct','<span class=tg>Paid</span>'],['INV-1002','Hamza Ali','10 Oct','PKR 4,500'],['INV-1003','Zainab Shah','10 Oct','<span class="tg r">Overdue</span> PKR 6,000']],p:['A4 voucher with student, school and bank copies','Unpaid balances move to next month automatically','Extra charges for one student, a class or the whole school']},
+Exams:{h:['Student','Total','Grade','Result'],r:[['Ayesha Khan','412 / 500','A','<span class=tg>Pass</span>'],['Hamza Ali','188 / 500','D','<span class="tg r">Fail</span>'],['Zainab Shah','455 / 500','A1','<span class=tg>Pass</span>']],p:['Weekly, monthly, mid-term, send-up and final results','Pass marks and grades set by your school','Promote the passed students to the next class in one step']},
+Staff:{h:['Name','Role','Education','Salary'],r:[['Sana Javed','Teacher, English','M.A., B.Ed','PKR 55,000'],['Imran Butt','Teacher, Math','M.Sc, B.Ed','PKR 60,000'],['Rashid Mehmood','Accountant','B.Com','PKR 48,000']],p:['CNIC, experience, allowances and attached documents','Payroll that pays salary plus allowance','New teacher form and experience letter']},
+Accounts:{h:['Account','Debit','Credit'],r:[['Bank','PKR 840,000',''],['Fee Receivable','PKR 126,000',''],['Fee Income','','PKR 966,000']],p:['Every fee received posts to the ledger by itself','Trial balance and balance sheet at any time','Expenses, chart of accounts and journal entries']}};
+const tb=$('#tabs');Object.keys(T).forEach((k,i)=>{const b=document.createElement('button');b.type='button';b.role='tab';b.textContent=k;b.setAttribute('aria-selected',i==0);b.onclick=()=>tour(k);tb.append(b)});
+function tour(k){[...tb.children].forEach(b=>b.setAttribute('aria-selected',b.textContent==k));const d=T[k];$('#scr').innerHTML='<table><tr>'+d.h.map((x,i)=>'<th'+(i>2?' class=n':'')+'>'+x+'</th>').join('')+'</tr>'+d.r.map(r=>'<tr>'+r.map((x,i)=>'<td'+(i>2?' class=n':'')+'>'+x+'</td>').join('')+'</tr>').join('')+'</table>';$('#tp').innerHTML=d.p.map(x=>'<li>'+x+'</li>').join('')}
+tour('Admissions');
+/* roles */
+const M=['Dashboard','Students','Attendance','Fees','Exams','Staff & payroll','Accounts','Import / export','Settings','Schools'];
+const R={Owner:[M,'Adds schools and creates every user. Only the owner can add or change users.'],'School administrator':[M.slice(0,9),'Runs the school: students, fees, exams, staff, accounts and settings. Cannot add schools or users.'],Teacher:[['Attendance','Exams'],'Sees only the classes and subjects assigned, for example Math in Class 6-A.'],'Accounts clerk':[['Fees','Accounts'],'Collects fees and records expenses. Sees nothing about marks or staff.']};
+const rb=$('#rb');Object.keys(R).forEach((k,i)=>{const b=document.createElement('button');b.type='button';b.textContent=k;b.setAttribute('aria-pressed',i==0);b.onclick=()=>role(k);rb.append(b)});
+function role(k){[...rb.children].forEach(b=>b.setAttribute('aria-pressed',b.textContent==k));$('#mn').innerHTML=M.filter(m=>m!='Schools'||k=='Owner').map(m=>'<span class="'+(R[k][0].includes(m)?'on':'off')+'">'+m+'</span>').join('');$('#rt').textContent=R[k][1]}
+role('Owner');
+/* plan */
+function plan(){const f=new FormData($('#pf')),g=k=>(f.get(k)||'').toString().trim(),u=(+g('a')||0)+(+g('t')||0)+(+g('o')||0),m=f.getAll('g');return {u,text:['Name: '+g('n'),'School: '+g('s'),'Phone: '+g('p'),'City: '+g('c'),'Schools: '+g('k'),'Students: '+g('m'),'Logins: '+u+' ('+g('a')+' administrators, '+g('t')+' teachers, '+g('o')+' accounts and office)','Needs: '+(m.join(', ')||'not chosen'),'','Notes: '+g('x')].join('\n'),s:g('s')}}
+function upd(){const f=new FormData($('#pf')),p=plan();$('#pl').innerHTML='Your plan: <b>'+(+f.get('k')||1)+'</b> school'+((+f.get('k')||1)>1?'s':'')+', <b>'+(+f.get('m')||0).toLocaleString('en-PK')+'</b> students, <b>'+p.u+'</b> logins, '+f.getAll('g').length+' areas selected.'}
+$('#pf').addEventListener('input',upd);upd();
+$('#pf').addEventListener('submit',e=>{e.preventDefault();const p=plan();location.href='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Modern Schools plan from '+p.s)+'&body='+encodeURIComponent(p.text)});
+$('#cp').addEventListener('click',()=>{const t=plan().text;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{$('#cp').textContent='Copied'},()=>{$('#cp').textContent='Select and copy manually'})});
+</script>
+</body>
+</html>
